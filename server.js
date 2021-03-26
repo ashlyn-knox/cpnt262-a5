@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const index = require('./routes')
+const dotenv = require('dotenv').config()
 
 const app = express();
 
@@ -16,7 +17,7 @@ app.use('/', index);
 // error page
 app.use((req, res) => {
   res.status(404);
-  res.redirect('/404');
+  res.sendFile('404.html');
 });
 
 // Port

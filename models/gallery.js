@@ -1,5 +1,6 @@
 // require the mongoose package
 const mongoose = require('mongoose');
+
 // define schema
 const gallerySchema = new mongoose.Schema(
   {
@@ -13,7 +14,6 @@ const gallerySchema = new mongoose.Schema(
     srcset: String
   }
 );
-// model
-//const Dog = model('dog', gallerySchema)
+
 // compile and export the schema
 module.exports = mongoose.model('Image', gallerySchema)
