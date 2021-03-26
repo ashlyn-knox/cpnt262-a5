@@ -17,16 +17,6 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/galleryApi/:id', async (req, res) => {
-  const image = await Image.findOne((id: req.params.id) => {
-    res.render('pages/image')
-  })
-  if (!image) {
-    response.status(404);
-    return response.send('Invalid ID')
-  }
-})
-
 // Login Page
 router.get('/login', (req, res) => {
   res.render('pages/login', {
