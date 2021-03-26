@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/galleryApi/:id', async (req, res) => {
   const image = await Image.findOne((id: req.params.id) => {
     res.render('pages/image')
   })
