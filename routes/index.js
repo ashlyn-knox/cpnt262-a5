@@ -17,15 +17,14 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:id', (req, res) => {
-  const image = Image.find((image) => {
-    return item.id === parseInt(request.params.id)
+router.get('/:id', async (req, res) => {
+  const image = await Image.findOne((id: req.params.id) => {
+    res.render('pages/image')
   })
   if (!image) {
     response.status(404);
     return response.send('Invalid ID')
   }
-  res.render('pages/image')
 })
 
 // Login Page
