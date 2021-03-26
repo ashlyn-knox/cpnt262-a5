@@ -25,6 +25,7 @@ router.get('/:id', (req, res) => {
     response.status(404);
     return response.send('Invalid ID')
   }
+  res.render('gallery-image', image)
 })
 
 // Login Page
