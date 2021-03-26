@@ -18,13 +18,13 @@ router.get('/api/v0/kiraGallery', async (req, res) => {
 
 // single images
 router.get('/:id', async (req, res) => {
-  const id = await Images.find({id: req.params.id}, (err, images) => {
+  const image = await Images.findOne({id: req.params.id})
     try {
       res.render('pages/image')
     } catch (err) {
       res.sendStatus(404)
+      console.log(err)
     }
-  })
 })
 
 module.exports = router;
