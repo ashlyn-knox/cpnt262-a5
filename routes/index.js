@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  const image = Image.find((item) {
+  const image = Image.find((image) => {
     return item.id === parseInt(request.params.id)
   })
   if (!image) {
