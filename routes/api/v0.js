@@ -6,22 +6,24 @@ const Image = require('../../models/gallery')
 const router = express.Router();
 
 // gallery
-router.get('/api/v0/kiraGallery', (req, res) => {
-  Image.find((err, images) => {
-    if (err) {
-      res.sendStatus(404)
-    }
+router.get('/api/v0/kiraGallery', async (req, res) => {
+  const images = await Image.find({})
+  try {
     res.json(images)
-  })
+  } catch (err) {
+
+      res.sendStatus(404)
+  }
 });
 
 // single images
-router.get('/api/v0/kiraGallery/:id', (req, res) => {
-  Image.find({id: req.params.id}, (err, images) => {
-    if (err) {
+router.get('/api/v0/kiraGallery/:id', async (req, res) => {
+  const id = await Images.find({id: req.params.id}, (err, images) => {
+    try {
+      res.render('pages/image')
+    } catch (err) {
       res.sendStatus(404)
     }
-    res.json(images)
   })
 })
 
