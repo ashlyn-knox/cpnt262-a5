@@ -17,7 +17,7 @@ router.get('/api/v0/kiraGallery', async (req, res) => {
 });
 
 // single images
-router.get('/api/v0/kiraGallery/:id', async (req, res) => {
+router.get('/:id', async (req, res) => {
   const id = await Images.find({id: req.params.id}, (err, images) => {
     try {
       res.render('pages/image')
