@@ -1,0 +1,331 @@
+/* :::::::::::::::::::::::: */
+/* ::: Default Settings ::: */
+/* :::::::::::::::::::::::: */
+:root {
+  /* animations */
+  --interaction-curve: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-sizing: border-box;
+
+  /* colors */
+  --black: hsl(80, 10%, 12%);
+  --black-lowOp: hsla(80, 10%, 12%, 0.7);
+  --green: hsl(168, 44%, 49%);
+  --red: hsl(1, 80%, 64%);
+  --purple: hsl(276, 10%, 80%);
+  --dark-grey: hsl(230, 8%, 28%);
+  --light-grey: hsl(33, 5%, 92%);
+  --light-grey-lowOp: hsla(33, 5%, 92%, 0.1);
+  --white: hsl(350, 2%, 98%);
+
+  /* shadows */
+  --inactive-shadow: 0 3px 5px hsla(209, 10%, 12%, 0.12), 0 1px 2px hsla(209, 10%, 12%, 0.24);
+  --hover-shadow: 0 14px 25px hsla(209, 10%, 12%, 0.24), 0 10px 10px hsla(209, 10%, 12%, 0.24);
+  --active-shadow: 0 14px 25px hsla(209, 20%, 28%, 0.24), 0 10px 10px hsla(0, 2%, 28%, 0.24);
+}
+/* ::::::::::::::::::::::::::::: */
+/* ::: Gallery Configuration ::: */
+/* ::::::::::::::::::::::::::::: */
+/* -:Line 142* for Interaction:- */
+
+/* ::: Gallery Layout ::: */
+.gallery-wrapper {
+  margin: 0 auto;
+  width: 80vw;
+  min-height: 40vh;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-auto-rows: minmax(100px, auto);
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Gallery title */
+.gallery-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem;
+}
+
+/* :::Card Layout ::: */
+.card {
+  position: relative;
+
+  height: min-content;
+
+  padding-bottom: 1rem;
+  /* Layout */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content 20px;
+
+  /* Style */
+  background-color: var(--white);
+  border-radius: 15px;
+  box-shadow: var(--inactive-shadow);
+  transition: var(--interaction-curve);  
+
+}
+
+/* Card Image */
+.normal-image, .sepia-image, .hue-image {
+  border-radius: 15px 15px 0px 0px;
+  width: 100%;
+  height: auto;
+
+  position: relative;
+
+  cursor: pointer;
+}
+.normal-image {
+  filter: grayscale(80%) contrast(100%);
+}
+.sepia-image {
+  filter: sepia(100%) contrast(100%);
+  grid-row: span 2;
+
+}
+.hue-image {
+  filter: hue-rotate(180deg) contrast(80%);
+}
+
+/* Card Text */
+.card h3, .card figcaption {
+  word-wrap: break-word;
+}
+
+.image-credit {
+  justify-self: center;
+  padding: 10px;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+}
+.card h3 {
+/*no grid support*/
+  position: absolute;
+  max-width: 10ch;
+  top: 2rem;
+  right: 1rem;
+  left: 1rem;
+
+  opacity: 0;
+
+  justify-self: center;
+  align-self: start;
+  grid-row-start: 1;
+}
+
+figcaption {
+  /* no grid support*/
+  position: absolute;
+  bottom: 4rem;
+  left: 1rem;
+  right: 1rem;
+
+  opacity: 0;
+  padding: 0 0 1.2rem 10px;
+  font-weight: 600;
+
+  grid-row-start: 1;
+}
+
+.credit-text {
+  /* no grid support*/
+  position: absolute;
+  bottom: 3rem;
+  left: 1rem;
+  right: 1rem;
+}
+
+/* ::::::::::::::::::::::::::: */
+/* ::: Gallery Interaction ::: */
+/* ::::::::::::::::::::::::::: */
+.card > * {
+  transition: var(--interaction-curve);
+}
+.card:hover {
+  box-shadow: var(--hover-shadow);
+}
+/* Hover States */
+.card:hover > .normal-image, .card:hover > .sepia-image, .card:hover > .hue-image  {
+  filter: contrast(16%);
+  opacity: 0.7;
+
+}
+.card:hover .caption, .card:hover h3 {
+  opacity: 1;
+  filter: contrast(100%);
+}
+
+/* Click States */
+.card:active {
+  box-shadow: var(--active-shadow);
+  transform: scale(1.5);
+  transition: var(--interaction-curve);
+  z-index: 20;
+}
+.card:active > .normal-image, .card:active > .sepia-image, .card:active .hue-image {
+  filter: none;
+  opacity: 1;
+
+}
+.card:active > .caption, .card:active > h3 {
+  opacity: 0;
+}
+
+/* ::::::::::::::::::: */
+/* ::: Site Layout ::: */
+/* ::::::::::::::::::: */
+
+/* ::: Main Layout ::: */
+body {
+  height: 100%;
+  min-height: 100%;
+}
+
+.site-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+
+  gap: 10px;
+
+  justify-content: center;
+}
+
+/* ::: Top Bar ::: */
+.top-bar {
+  margin: 0;
+  padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+.navigation {
+  justify-self: end;
+  display: flex;
+}
+.navigation > * {
+  margin: 0 10px;
+}
+.navigation a:hover {
+  color: var(--green);
+}
+.home-link {
+  width: 48px;
+  height: auto;
+}
+.home-link:hover {
+  color: var(--green);
+}
+
+/* ::: Header ::: */
+.header {
+  margin: 0;
+
+  background-image: url("../assets/images/lg/grass-happy-kira-lg.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100vw;
+  min-height: 46vh;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+.header-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: 15px;
+  padding: 0px 16px;
+  background-color: hsla(350, 2%, 98%, 0.4);
+  width: 60vw;
+  text-align: center;
+}
+
+/* ::: Footer ::: */
+.footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  min-height: 20vh;
+  width: 100%;
+  margin-top: 5rem;
+
+  background-color: var(--black);
+}
+
+.footer p {
+  padding: 0rem 0rem 2rem 0rem;
+  color: var(--light-grey);
+}
+/* ::: Signup Forms ::: */
+.login-page {
+  margin: 0 auto;
+  padding: 4rem;
+}
+.login-box {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  width: 20rem;
+
+  background-color: var(--light-grey);
+}
+.login-box h2, .login-box h3 {
+  align-self: center;
+}
+#registration {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+#registration > * {
+  margin: 12px;
+}
+.email-notifications {
+  border: none;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#login {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+#login > * {
+  padding: 16px;
+}
+#login-submit {
+  width: 6rem;
+  margin: 16px;
+  align-self: flex-end;
+}
+.forgot-password {
+  align-self: center;
+  justify-self: center;
+}
+/* ::: 404 Page ::: */
+.error-page {
+  margin: 0 auto;
+}
+.error-notice {
+  max-width: 60vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+

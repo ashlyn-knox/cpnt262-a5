@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head.ejs') %>
+   </head>
+
+  <body>
+  <!--Site content-->
+    <div class="site-wrapper">
+      <%- include('../partials/header.ejs') %>
+      <!--gallery-->
+      <main class="login-page">
+
+        <article class="login-box">
+          <h2><%= formTitle %></h2>
+          <form action="" method="post" id="login">
+            <label for="username">Username: </label>
+            <input type="text" name="username" id="uname" placeholder="User Name" required>
+            <label for="log-pass">Password</label>
+            <input type="password" name="log-pass" id="log-pass" placeholder="Password" required>
+            <input type="submit" value="Login" id="login-submit">
+          </form>
+          <div class="forgot-password">
+          <h3>Forgot your Password?</h3>
+          <input type="button" value="Email Password Reset">
+          </div>
+        </article>
+      </main>
+
+      <!--footer-->
+      <footer class="footer">
+        <%- include('../partials/footer.ejs') %>
+      </footer>
+    </div>
+  </body>
+</html>
