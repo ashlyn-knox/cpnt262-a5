@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const kiraGallery = require('../data/kiraGallery');
 const galleryApi = require('./api/v0');
 
 // gallery Api middleware
 router.use('/', galleryApi);
+
+// config middlware
+// TODO Replace all site title's and authors to reduce code
 
 // Home Page
 router.get('/', (req, res) => {
@@ -14,6 +16,16 @@ router.get('/', (req, res) => {
     author: 'Ashlyn Knox',
   });
 });
+
+router.get('/:id', (req, res) => {
+  const image = Image.find((item) {
+    return item.id === parseInt(request.params.id)
+  })
+  if (!image) {
+    response.status(404);
+    return response.send('Invalid ID')
+  }
+})
 
 // Login Page
 router.get('/login', (req, res) => {
