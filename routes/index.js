@@ -1,6 +1,6 @@
 const express = require('express');
 const galleryApi = require('./api/v0');
-const config = require('../../config')
+//const config = require('../../config')
 const imageGallery = require('../models/gallery')
 
 const router = express.Router();
