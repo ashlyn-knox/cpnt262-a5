@@ -1,6 +1,8 @@
 const path = require('path');
 const express = require('express');
 const index = require('./routes')
+const mongoose = require('./_connection')
+const kiraGallery = require('./models/gallery')
 const dotenv = require('dotenv').config()
 
 const app = express();
