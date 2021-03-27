@@ -9,10 +9,10 @@ const router = express.Router();
 router.use('/', galleryApi);
 
 // config middlware
-router.use((req, res, next) => {
-  res.locals = config
-  next()
-})
+//router.use((req, res, next) => {
+  //res.locals = config
+  //next()
+//})
 
 // Home Page
 router.get('/', (req, res) => {
@@ -44,12 +44,16 @@ router.get('/register', (req, res) => {
 });
 
 // Single Image
-router.get('/:id', async (req, res) => {
+router.get('/gallery/:id', async (req, res, next) => {
   try {
     const image = await imageGallery.findOne({id: req.params.id})
-    res.render('pages/image')
+    res.render('pages/image', {
+      siteTitle: 'Good Girl Kira',
+      pageTitle: 'Image Page',
+      author: 'Ashlyn Knox',
+    })
   } catch (err) {
-    res.status(err)
+    return next(err)
   }
 })
 
