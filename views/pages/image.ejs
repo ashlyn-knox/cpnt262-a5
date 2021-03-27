@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include ('../partials/head') %>
+  <%- include ('../partials/head.ejs') %>
 </head>
 <body>
   <div class="site-wrapper">
-  <header><%- include('../partials/header')></header>
+  <header><%- include('../partials/header.ejs')></header>
   <main class="gallery-wrapper">
     <!-- Single Image -->
     <img src="<%=image.pathURL%>" alt="<%= image.title %>">
   </main>
     </div>
-  <footer><%- include('../partials/footer')></footer>
+  <footer><%- include('../partials/footer.ejs')></footer>
 </body>
 </html>
