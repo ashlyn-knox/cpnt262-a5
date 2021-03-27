@@ -6,7 +6,7 @@ const Image = require('../../models/gallery')
 const router = express.Router();
 
 // gallery
-router.get('/gallery', async (req, res) => {
+router.get('/api/v0/kiraGallery', async (req, res) => {
   try {
   const imageGallery = await Image.find({})
     res.json(imageGallery)
