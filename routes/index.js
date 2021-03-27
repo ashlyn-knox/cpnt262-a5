@@ -51,7 +51,7 @@ router.get('/gallery/:id', async (req, res, next) => {
       siteTitle: 'Good Girl Kira',
       pageTitle: 'Image Page',
       author: 'Ashlyn Knox',
-      image
+      image,
     })
   } catch (err) {
     return next(err)
