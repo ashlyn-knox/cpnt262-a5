@@ -44,7 +44,7 @@ router.get('/register', (req, res) => {
 });
 
 // Single Image
-router.get('/gallery/:id', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
     const image = await imageGallery.findOne({id: req.params.id})
     return res.render('pages/image', {
