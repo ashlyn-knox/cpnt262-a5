@@ -47,10 +47,11 @@ router.get('/register', (req, res) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const image = await imageGallery.findOne({id: req.params.id})
-    res.render('pages/image', {
+    return res.render('pages/image', {
       siteTitle: 'Good Girl Kira',
       pageTitle: 'Image Page',
       author: 'Ashlyn Knox',
+      galImage: image,
     })
   } catch (err) {
     return next(err)

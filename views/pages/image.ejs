@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include ('../partials/head.ejs') %>
+  <%- include('../partials/head.ejs') %>
 </head>
 <body>
   <div class="site-wrapper">
   <header><%- include('../partials/header.ejs')></header>
   <main class="gallery-wrapper">
     <!-- Single Image -->
-    <img src="<%=image.pathURL%>" alt="<%= image.title %>">
+    <img src="<%= galImage.pathURL %>" alt="<%= image.title %>">
   </main>
     </div>
   <footer><%- include('../partials/footer.ejs')></footer>
