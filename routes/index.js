@@ -1,12 +1,18 @@
 const express = require('express');
-const router = express.Router();
 const galleryApi = require('./api/v0');
+const config = require('../../config')
+const imageGallery = require('../models/gallery')
+
+const router = express.Router();
 
 // gallery Api middleware
 router.use('/', galleryApi);
 
 // config middlware
-// TODO Replace all site title's and authors to reduce code
+router.use((req, res, next) => {
+  res.locals = config
+  next()
+})
 
 // Home Page
 router.get('/', (req, res) => {
@@ -36,5 +42,16 @@ router.get('/register', (req, res) => {
     author: 'Ashlyn Knox',
   });
 });
+
+// Single Image
+router.get('/images/:id', async (req, res, next) => {
+  try {
+    const image = await imageGallery.findONe({id: req.params.id})
+    res.render('pages/image')
+  } catch (err) {
+    return next (err)
+  }
+})
+
 
 module.exports = router;
